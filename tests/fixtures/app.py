@@ -5,10 +5,16 @@ class App(ServiceApp):
     pass
 
 
+@App.service(name='test')
+def test_service(registry):
+    return 'SERVICE'
+
+
 @App.path(path='/')
 class Root(object):
-    def __init__(self):
-        self.value = 'ROOT'
+    def __init__(self, request):
+        value = request.app.find_service('test')
+        self.value = value
 
 
 @App.view(model=Root)

@@ -6,7 +6,7 @@ class App(ServiceApp):
 
 
 @App.service(name='test')
-def test_service(registry):
+def test_service(registry, settings):
     return 'SERVICE'
 
 

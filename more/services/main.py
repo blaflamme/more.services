@@ -8,7 +8,7 @@ from reg import (
     )
 
 
-class Service(object):
+class _Service(object):
     pass
 
 
@@ -35,12 +35,12 @@ class ServiceRegistry(Registry):
         )
         self.register_value(
             name,
-            [Service],
+            [_Service],
             obj(self, self._setting_registry)
         )
 
     def find(self, name):
-        return self.component(name, Service)
+        return self.component(name, _Service)
 
 
 @ServiceApp.directive('service')
